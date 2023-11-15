@@ -279,10 +279,12 @@ def diff():
 
 
 @cli.command()
-def ingest():
+@click.argument("dir", default=".", required=False, type=click.Path(exists=True))
+def ingest(dir):
     """Index files in current repo to be used with 'ask' and 'chat'."""
+    console.print(f"dir={dir}")
     check_llm_consent()
-    ingest_repo()
+    ingest_repo(dir)
 
 
 def check_llm_consent():

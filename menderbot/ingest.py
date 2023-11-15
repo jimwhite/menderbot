@@ -56,11 +56,11 @@ def is_path_included(path: str) -> bool:
     return path not in excluded_paths and ext.lower() in included_extensions
 
 
-def ingest_repo(replace=False) -> None:
+def ingest_repo(dir=".", replace=False) -> None:
     if replace:
         delete_index(PERSIST_DIR)
 
-    repo = Repo(".")
+    repo = Repo(dir)
     commit = repo.commit("HEAD")
 
     file_paths = [
