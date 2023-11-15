@@ -7,7 +7,8 @@ def git_diff_head(staged=False) -> str:
     staged_arg = []
     if staged:
         staged_arg = ["--staged"]
-    args = ["git", "diff"] + staged_arg + ["HEAD", "--", ".", ":!Pipfile.lock"]
+    # args = ["git", "diff"] + staged_arg + ["HEAD", "--", ".", ":!Pipfile.lock"]
+    args = ["git", "diff"] + staged_arg + ["HEAD", "--", "."]
     return subprocess.check_output(args, text=True)
 
 
